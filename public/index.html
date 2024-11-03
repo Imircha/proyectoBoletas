@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Boleta de Servicio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Boleta de Servicio</h1>
+    <form id="serviceForm" action="/enviar-boleta" method="POST">
+        <label for="boletaNum">Número de Boleta:</label>
+        <input type="text" id="boletaNum" name="boletaNum" readonly>
+
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required>
+
+        <label for="tecnico">Técnico:</label>
+        <input type="text" id="tecnico" name="tecnico" required>
+
+        <label for="fecha">Fecha del Servicio:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="numeroIncidencia">Número de Incidencia:</label>
+        <input type="text" id="numeroIncidencia" name="numeroIncidencia" required>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" required>
+
+        <label for="serie">Serie:</label>
+        <input type="text" id="serie" name="serie" required>
+
+        <label for="motivoServicio">Motivo de Servicio:</label>
+        <input type="text" id="motivoServicio" name="motivoServicio" required>
+
+        <label for="condicionEquipo">Condición del Equipo:</label>
+        <input type="text" id="condicionEquipo" name="condicionEquipo" required>
+
+        <label for="accionTomada">Acción Tomada:</label>
+        <input type="text" id="accionTomada" name="accionTomada" required>
+
+        <label for="motivoLlamada">Motivo de Llamada:</label>
+        <input type="text" id="motivoLlamada" name="motivoLlamada" required>
+
+        <label for="ubicacionFalla">Ubicación de la Falla:</label>
+        <input type="text" id="ubicacionFalla" name="ubicacionFalla" required>
+
+        <label for="tipoFalla">Tipo de Falla:</label>
+        <input type="text" id="tipoFalla" name="tipoFalla" required>
+
+        <label for="horaInicialViaje">Hora Inicial Viaje:</label>
+        <input type="time" id="horaInicialViaje" name="horaInicialViaje" required>
+
+        <label for="horaFinalViaje">Hora Final Viaje:</label>
+        <input type="time" id="horaFinalViaje" name="horaFinalViaje" required>
+
+        <label for="horaInicialTrabajo">Hora Inicial Trabajo:</label>
+        <input type="time" id="horaInicialTrabajo" name="horaInicialTrabajo" required>
+
+        <label for="horaFinalTrabajo">Hora Final Trabajo:</label>
+        <input type="time" id="horaFinalTrabajo" name="horaFinalTrabajo" required>
+
+        <!-- Nuevo campo de email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Nuevo campo de horas trabajadas -->
+        <label for="horas">Horas Trabajadas:</label>
+        <input type="number" id="horas" name="horas" min="1" required>
+
+        <label for="repuestos">Repuestos Utilizados:</label>
+        <table id="repuestosTable">
+            <thead>
+                <tr>
+                    <th>Nombre del Repuesto</th>
+                    <th>Cantidad</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="repuesto[]" required></td>
+                    <td><input type="number" name="cantidad[]" min="1" required></td>
+                    <td><input type="text" name="descripcion[]" required></td>
+                    <td>
+                        <select name="estado[]">
+                            <option value="Correcto">Correcto</option>
+                            <option value="Defectuoso">Defectuoso</option>
+                        </select>
+                    </td>
+                    <td><button type="button" onclick="eliminarFila(this)">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="agregarFila()">Agregar Repuesto</button>
+
+        <h2>Checklist de Servicio Técnico</h2>
+
+        <h3>Ambiente de Trabajo:</h3>
+        <label><input type="checkbox" name="checklistAmbiente[]" value="Adecuado"> EQUIPO EXPUESTO A UN AMBIENTE ADECUADO</label><br>
+        <label><input type="checkbox" name="checklistAmbiente[]" value="Conexiones"> EQUIPO CON MULTIPLES CONEXIONES</label><br>
+        <label><input type="checkbox" name="checklistAmbiente[]" value="TomaTierra"> TOMA A TIERRA</label><br>
+        <label><input type="checkbox" name="checklistAmbiente[]" value="Voltaje"> REVISIÓN NIVEL DE VOLTAJE ADECUADO ESTABILIZADO</label><br>
+        <label><input type="checkbox" name="checklistAmbiente[]" value="Limpieza"> LIMPIEZA EXTERNA/INTERNA</label><br>
+
+        <h3>Insumos Utilizados:</h3>
+        <label><input type="checkbox" name="checklistInsumos[]" value="PapelAdecuado"> TIPO DE PAPEL ADECUADO</label><br>
+        <label><input type="checkbox" name="checklistInsumos[]" value="TonerOriginal"> VERIFICACIÓN DEL USO DE TONER ORIGINAL</label><br>
+
+        <h3>Unidades y Accesorios:</h3>
+        <label><input type="checkbox" name="checklistUnidades[]" value="SistemaOptico"> SISTEMA OPTICO</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="EntornoFotoconductor"> ENTORNO DEL FOTOCONDUCTOR</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadLimpieza"> UNIDAD DE LIMPIEZA</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadTransferencia"> UNIDAD DE TRANSFERENCIA</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadRevelado"> UNIDAD DE REVELADO</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadAlimentacion"> UNIDAD DE ALIMENTACIÓN DE PAPEL</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadFusion"> UNIDAD DE FUSION Y SALIDA DE PAPEL</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="TonerResidual"> ENVASE DE TONER RESIDUAL</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="PanelOperaciones"> PANEL DE OPERACIONES Y PULSADORES</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadDuplex"> UNIDAD DUPLEX</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="BandejasPapel"> BANDEJAS DE PAPEL</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="SistemaElectrico"> SISTEMA ELECTRICO Y MECÁNICO</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="AlimentadorOriginales"> ALIMENTADOR DE ORIGINALES</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="BandejaCapacidad"> BANDEJA DE GRAN CAPACIDAD</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="Finalizador"> FINALIZADOR</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="MailBox"> MAIL BOX</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadLaser"> UNIDAD LASER</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadBypass"> UNIDAD BY PASS</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadPuente"> UNIDAD PUENTE</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadIntercambio"> UNIDAD DE INTERCAMBIO</label><br>
+        <label><input type="checkbox" name="checklistUnidades[]" value="UnidadCubiertas"> UNIDAD DE CUBIERTAS</label><br>
+
+        <button type="submit">Enviar Boleta</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

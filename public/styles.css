@@ -1,0 +1,113 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #f4f4f4; /* Color de fondo base */
+    background-image: linear-gradient(135deg, rgba(143, 143, 143, 0.7), rgba(158, 107, 107, 0.8)), url('fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    margin: 0;
+    padding: 20px;
+    color: #333; /* Color de texto por defecto */
+    line-height: 1.6; /* Espaciado de líneas para mejor legibilidad */
+}
+
+/* Para mantener el encabezado más destacado */
+h1 {
+    text-align: center;
+    font-size: 2.5em; /* Tamaño de fuente grande para encabezados */
+    color: #010202; /* Color del encabezado */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Agrega un estilo de contenedor para los elementos */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 20px auto; /* Centrado horizontal */
+}
+
+
+h1 {
+    text-align: center;
+}
+
+form {
+    background-color: #f0e4e4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 85%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="number" i] {
+    width: 85%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="email" i] {
+    width: 85%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f8f8;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+input[type="button"] {
+    background-color: #dc3545; /* Rojo para el botón de eliminar */
+}
+
+input[type="button"]:hover {
+    background-color: #c82333;
+}
